@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.DecimalMax;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -23,9 +24,12 @@ public class Patient {
     public String nom;
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-mm-dd")
+    @NotNull
     public Date dateNaissance;
     @DecimalMin("0")
     @DecimalMax("100")
+    @NotNull
     public int score;
+    @NotNull
     public boolean malade;
 }

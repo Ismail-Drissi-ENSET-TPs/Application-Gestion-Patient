@@ -17,7 +17,7 @@ public class AppGestionPatientApplication {
         SpringApplication.run(AppGestionPatientApplication.class, args);
     }
 
-    @Bean
+    //@Bean
     public CommandLineRunner init(PatientRepository patientRepository) {
 
         return args -> {

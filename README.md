@@ -9,7 +9,9 @@ Cette application web JEE basée sur Spring MVC, Thymeleaf et Spring Data JPA pe
 - ✅ **Affichage des patients** : Visualisation des patients sous forme de tableau avec leurs informations essentielles (ID, nom, date de naissance, état de santé, score)
 - ✅ **Pagination** : Navigation simplifiée entre les différentes pages de la liste des patients
 
-![Capture d'écran de l'application](./screenshots/screenshot.png)
+![Capture d'écran de l'application](./screenshots/index.png)
+![Capture d'écran de l'application](./screenshots/createPatient.png)
+![Capture d'écran de l'application](./screenshots/errorCreatePatient.png)
 
 ## Technologies Utilisées
 - **Spring MVC** : Architecture Model-View-Controller
@@ -36,6 +38,8 @@ src/
 │       ├── static/
 │       ├── templates/
 │       │   └── index.html
+│       │   └── createPatient.html
+│       │   └── template1.html
 │       └── application.properties
 ```
 
