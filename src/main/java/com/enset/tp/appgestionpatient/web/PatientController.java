@@ -2,12 +2,17 @@ package com.enset.tp.appgestionpatient.web;
 
 import com.enset.tp.appgestionpatient.entities.Patient;
 import com.enset.tp.appgestionpatient.repositories.PatientRepository;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import lombok.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -29,14 +34,28 @@ public class PatientController {
         model.addAttribute("pages", new int[patients.getTotalPages()]);
         model.addAttribute("currentPage", page);
         model.addAttribute("keyword", keyword);
+        model.addAttribute("size", size);
         return "patients";
     }
 
 
     @GetMapping("/delete")
-    public String delete(Long id, String keyword, Integer page){
+    public String delete(Long id, String keyword, Integer page, Integer size){
         patientRepository.deleteById(id);
-        return "redirect:/index?page=" + page + "&keyword=" + keyword;
+        if(size == null){size = 4;}
+        return "redirect:/index?page=" + page + "&keyword=" + keyword + "&s=" + size;
     }
 
+    @GetMapping("/createPatient")
+    public String createPatient(Model model){
+        model.addAttribute("patient", new Patient());
+        return "createPatient";
+    }
+
+    @PostMapping("/savePatient")
+    public String savePatient(Model model, @Valid Patient patient, BindingResult bindingResult){
+        if(bindingResult.hasErrors()){ return "createPatient"; }
+        patientRepository.save(patient);
+        return "redirect:/createPatient";
+    }
 }
