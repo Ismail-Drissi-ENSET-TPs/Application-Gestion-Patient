@@ -21,7 +21,7 @@ public class AppGestionPatientApplication {
     public CommandLineRunner init(PatientRepository patientRepository) {
 
         return args -> {
-            Patient patient = Patient.builder().nom("Ismail").dateNaissance(new Date()).score(34).malade(false).build();
+            Patient patient = Patient.builder().nom("Azizo").dateNaissance(new Date()).score(34).malade(false).build();
             patientRepository.save(patient);
         };
     }
