@@ -23,7 +23,7 @@ public class PatientController {
 
     // En fait un mappage du chemin "/index" à cette méthode
 
-    @GetMapping("/index")
+    @GetMapping("/user/index")
     public String index(Model model,
                         @RequestParam(name = "p", defaultValue = "0") int page,
                         @RequestParam(name = "s", defaultValue = "4") int size,
@@ -39,23 +39,23 @@ public class PatientController {
     }
 
 
-    @GetMapping("/delete")
+    @GetMapping("/admin/delete")
     public String delete(Long id, String keyword, Integer page, Integer size){
         patientRepository.deleteById(id);
         if(size == null){size = 4;}
-        return "redirect:/index?page=" + page + "&keyword=" + keyword + "&s=" + size;
+        return "redirect:/user/index?page=" + page + "&keyword=" + keyword + "&s=" + size;
     }
 
-    @GetMapping("/createPatient")
+    @GetMapping("/admin/createPatient")
     public String createPatient(Model model){
         model.addAttribute("patient", new Patient());
         return "createPatient";
     }
 
-    @PostMapping("/savePatient")
+    @PostMapping("/admin/savePatient")
     public String savePatient(Model model, @Valid Patient patient, BindingResult bindingResult){
         if(bindingResult.hasErrors()){ return "createPatient"; }
         patientRepository.save(patient);
-        return "redirect:/createPatient";
+        return "redirect:/admin/createPatient";
     }
 }

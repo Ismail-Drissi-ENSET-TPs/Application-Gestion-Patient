@@ -23,7 +23,7 @@
             <div class="collapse navbar-collapse" id="navbarMain">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" href="/index">
+                        <a class="nav-link active" href="/user/index">
                             <i class="fas fa-user-md me-1"></i> Patients
                         </a>
                     </li>
@@ -82,7 +82,7 @@
                             <div class="rounded-circle bg-primary d-flex align-items-center justify-content-center me-2" style="width: 35px; height: 35px;">
                                 <span class="text-white fw-bold">MD</span>
                             </div>
-                            <span style="color: #3c6382;">Dr. Ismail</span>
+                            <span style="color: #3c6382;">Dr. <span th:text="${#authentication.name}"></span></span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="userDropdown">
                             <li><a class="dropdown-item" href="/profil"><i class="fas fa-user me-2"></i> Mon profil</a></li>

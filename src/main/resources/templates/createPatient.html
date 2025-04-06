@@ -155,7 +155,7 @@
                 <small class="text-muted">Remplissez les informations du patient</small>
             </div>
 
-            <form th:action="@{/savePatient}" method="post" th:object="${patient}">
+            <form th:action="@{/admin/savePatient}" method="post" th:object="${patient}">
                 <input type="hidden" th:field="*{id}" />
 
                 <div class="form-body">
